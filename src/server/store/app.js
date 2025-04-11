@@ -5,9 +5,9 @@ import { get } from "../http";
 // New thunk for v1/ayah/24/en.asad API
 export const getQuotes = createAsyncThunk(
   "ayah/fetch",
-  async (_, { rejectWithValue }) => {
+  async ({ ayahNumber }, { rejectWithValue }) => {
     try {
-      const response = await get(`/v1/ayah/24/en.asad`);
+      const response = await get(`/v1/ayah/${ayahNumber || 1}/en.asad`);
 
       if (response?.code === 200) {
         return response?.data;
